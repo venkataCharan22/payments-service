@@ -1,8 +1,6 @@
-"""Refund processing — BUG: assumes 'metadata' key exists."""
+# Instead of: value = my_dict[key]
+value = my_dict.get(key, default_value)
 
-
-def process_refund(refund):
-    """Process a single refund."""
-    # BUG: KeyError when refund has no 'metadata' field
-    reason = refund["metadata"]["reason"]
-    return {"status": "refunded", "reason": reason, "amount": refund["amount"]}
+# Or check first:
+if key in my_dict:
+    value = my_dict[key]
